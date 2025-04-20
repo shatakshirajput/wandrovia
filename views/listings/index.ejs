@@ -1,0 +1,90 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <div class="container filters">
+        <button
+          class="btn add-btn d-lg-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#filterCollapse"
+          aria-expanded="false"
+          aria-controls="filterCollapse"
+        >
+          Filters
+        </button>
+        <div class="collapse d-lg-flex flex-wrap" id="filterCollapse">
+            <div class="filter">
+                <a href="/listings?category=Trendings" class="btn btn-category">
+                    <div><i class="fa-solid fa-fire"></i></div>
+                    <p>Trendings</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Rooms" class="btn btn-category">
+                    <div><i class="fa-solid fa-bed"></i></div>
+                    <p>Rooms</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Iconic Cities" class="btn btn-category">
+                    <div><i class="fa-solid fa-mountain-city"></i></div>
+                    <p>Iconic Cities</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Mountains" class="btn btn-category">
+                    <div><i class="fa-solid fa-mountain"></i></div>
+                    <p>Mountains</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Castles" class="btn btn-category">
+                    <div><i class="fa-brands fa-fort-awesome"></i></div>
+                    <p>Castles</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Amazing Pools" class="btn btn-category">
+                    <div><i class="fa-solid fa-person-swimming"></i></div>
+                    <p>Amazing Pools</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Camping" class="btn btn-category">
+                    <div><i class="fa-solid fa-campground"></i></div>
+                    <p>Camping</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Farms" class="btn btn-category">
+                    <div><i class="fa-solid fa-tractor"></i></div>
+                    <p>Farms</p>
+                </a>
+            </div>
+            <div class="filter">
+                <a href="/listings?category=Arctic" class="btn btn-category">
+                    <div><i class="fa-regular fa-snowflake"></i></div>
+                    <p>Arctic</p>
+                </a>
+            </div>
+        </div>
+    </div>
+        <div class="row row-cols-lg-3 row-cols-med-2 row-cols-sm-1 mt-1">
+            <% for (let listing of allListings) {%>
+                <a href="/listings/<%=listing._id%>" class="listing-link">
+                    <div class="card col" ">
+                    <img src=" <%=listing.image.url %>" style="height: 20rem" class="card-img-top" alt="listing-image">
+                        <div class="card-img-overlay">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <%=listing.title%>
+                                </b><br>
+                                &#8377; <%=listing.price.toLocaleString("en-IN")%> / night
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <%}%>
+        </div>
+    </body>
