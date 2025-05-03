@@ -1,32 +1,130 @@
 <% layout('/layouts/boilerplate') %>
 
-<div class="row mt-3">
-    <h1 class="col-6 offset-2 mb-5">Sign up </h1>
-    <div class="col-6 offset-2">
-        <form action="/signup" method="post" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-                <div class="valid-feedback">Looks good!!</div>
-                <div class="invalid-feedback">Please enter the username</div>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email" required>
-                <div class="valid-feedback">Looks good!!</div>
-                <div class="invalid-feedback">Please enter the email address</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-                <div class="valid-feedback">Looks good!!</div>
-                <div class="invalid-feedback">Please enter the password</div>
-            </div>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #f0f2f5;
+    }
 
-            <button type="submit" class="btn btn-outline-dark">Sign Up</button>
-        </form>
+    .signup-container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .signup-left {
+        flex: 4;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: slideIn 1s ease-out forwards;
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .signup-right {
+        flex: 6;
+        background: url("/loginpageimage.jpg") no-repeat center center;
+        background-size: cover;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes slideIn {
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .signup-box {
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #333;
+        text-align: center;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #30b862;
+    }
+
+    .btn-signup {
+        background-color: #30b862;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 14px;
+        font-weight: 600;
+        font-size: 16px;
+        width: 100%;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .btn-signup:hover {
+        transform: scale(1.03);
+        background-color: #27a755;
+    }
+</style>
+
+<div class="signup-container">
+    <div class="signup-left">
+        <div class="signup-box">
+            <h1>Sign up</h1>
+            <form action="/signup" method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                    <div class="valid-feedback">Looks good!!</div>
+                    <div class="invalid-feedback">Please enter the username</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" required>
+                    <div class="valid-feedback">Looks good!!</div>
+                    <div class="invalid-feedback">Please enter the email address</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="valid-feedback">Looks good!!</div>
+                    <div class="invalid-feedback">Please enter the password</div>
+                </div>
+                <button type="submit" class="btn btn-signup">Sign Up</button>
+            </form>
+        </div>
     </div>
+    <div class="signup-right"></div>
 </div>
-
-<!-- user Shatakshi pass 12345678
- user demo pass password -->

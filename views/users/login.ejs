@@ -1,22 +1,118 @@
 <% layout('/layouts/boilerplate') %>
 
-<div class="row mt-3">
-    <h1 class="col-6 offset-2 mb-5">Login</h1>
-    <div class="col-6 offset-2">
-        <form action="/login" method="post" class="needs-validation" novalidate>
-            <div class="mb-3">
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #f0f2f5;
+    }
+
+    .login-container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .login-left {
+        flex: 4;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: slideIn 1s ease-out forwards;
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .login-right {
+        flex: 6;
+        background: url("/loginpageimage.jpg") no-repeat center center;
+        background-size: cover;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes slideIn {
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 350px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #333;
+        text-align: center;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #30b862;
+    }
+
+    .btn-login {
+        background-color: #30b862;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 14px;
+        font-weight: 600;
+        font-size: 16px;
+        width: 100%;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .btn-login:hover {
+        transform: scale(1.03);
+        background-color: #27a755;
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-left">
+        <div class="login-box">
+            <h2>Login to Wandrovia</h2>
+            <form action="/login" method="post" class="needs-validation" novalidate>
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
-            </div>
-            <div class="mb-3">
+
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
-            </div>
 
-            <button type="submit" class="btn btn-outline-dark">Login</button>
-        </form>
+                <button type="submit" class="btn btn-login">Login</button>
+            </form>
+        </div>
     </div>
+    <div class="login-right"></div>
 </div>
-
-<!-- user Shatakshi pass 12345678
- user demo pass password -->
