@@ -47,7 +47,7 @@ const sessionOptions={
 };
 
 app.get("/",(req,res)=>{
-    res.render("C:/Users/hp/Desktop/Projects/Wandurlust/views/listings/main.ejs");
+    res.render("listings/main.ejs");
 });
 
 app.use(session(sessionOptions));
@@ -97,7 +97,7 @@ app.all("*",(req,res,next)=>{
 
 app.use((err,req,res,next)=>{
     let {status=500,message="Something went wrong"}=err;
-    res.status(status).render("C:/Users/hp/Desktop/Projects/Wandurlust/views/listings/error.ejs",{message});
+    res.status(status).render("listings/error.ejs",{message});
     // res.status(status).send(message);
 });
 

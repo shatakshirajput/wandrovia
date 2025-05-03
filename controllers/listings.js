@@ -3,10 +3,10 @@ const ExpressError= require("../utils/ExpressError.js");
 
 module.exports.index=async (req,res)=>{
     const allListings = await Listing.find({});
-    res.render("C:/Users/hp/Desktop/Projects/Wandurlust/views/listings/index.ejs",{allListings});
+    res.render("listings/index.ejs",{allListings});
 };
 module.exports.rendernewForm=(req,res)=>{
-    res.render("C:/Users/hp/Desktop/Projects/Wandurlust/views/listings/new.ejs");
+    res.render("listings/new.ejs");
 };
 module.exports.showListings=async (req,res)=>{
     let {id}=req.params;
@@ -16,7 +16,7 @@ module.exports.showListings=async (req,res)=>{
         res.redirect("/listings");
     }
     console.log(listing);
-    res.render("C:/Users/hp/Desktop/Projects/Wandurlust/views/listings/show.ejs",{listing});
+    res.render("listings/show.ejs",{listing});
 };
 module.exports.createListings=async(req,res)=>{
     // let result = listingSchema.validate(req.body);
@@ -41,7 +41,7 @@ module.exports.renderEditForm=async(req,res)=>{
     console.log("Requested ID:", id);
     console.log("Fetched Listing:", listing);
 
-    res.render("C:/Users/hp/Desktop/Projects/Wandurlust/views/listings/edit.ejs",{listing});
+    res.render("listings/edit.ejs",{listing});
 };
 module.exports.updateListing=async(req,res)=>{
     let {id}=req.params;
