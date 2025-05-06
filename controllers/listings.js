@@ -1,10 +1,19 @@
 const Listing = require ("../models/listing.js");
 const ExpressError= require("../utils/ExpressError.js");
 
-module.exports.index=async (req,res)=>{
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs",{allListings});
+module.exports.index = async (req, res) => {
+    const { search, category } = req.query;
+    let filter = {};
+
+    // Filter by category (optional)
+    if (category) {
+        filter.category = category;
+    }
+
+    const allListings = await Listing.find(filter);
+    res.render("listings/index.ejs", { allListings });
 };
+
 module.exports.rendernewForm=(req,res)=>{
     res.render("listings/new.ejs");
 };
