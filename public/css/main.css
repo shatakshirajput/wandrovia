@@ -170,12 +170,6 @@ nav a:hover::after {
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    .destination-card {
-        padding: 1rem;
-    }
-}
-
 .gallery img {
     width: 100%;
     height: 200px;
@@ -259,11 +253,113 @@ nav a:hover::after {
     background: #203c3c;
 }
 
-footer {
-    padding: 3rem 2rem;
-    text-align: center;
-    background: var(--forest-green);
+.footer {
+    background: var(--charcoal-black);
     color: var(--sand-beige);
+    padding: 60px 20px 30px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-branding h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-branding p {
+    max-width: 300px;
+    font-size: 0.95rem;
+    color: var(--stone-gray);
+}
+
+.footer-socials a {
+    margin-right: 10px;
+    font-size: 1.3rem;
+    color: var(--sand-beige);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-socials a:hover {
+    transform: scale(1.2);
+    color: var(--forest-green);
+}
+
+.footer-links h4,
+.footer-legal h4,
+.footer-newsletter h4 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--off-white);
+}
+
+.footer-links ul,
+.footer-legal ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li,
+.footer-legal ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a,
+.footer-legal ul li a {
+    color: var(--stone-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover,
+.footer-legal ul li a:hover {
+    color: #fff;
+}
+
+.footer-newsletter form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-newsletter input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    background: var(--sand-beige);
+    color: var(--charcoal-black);
+}
+
+.footer-newsletter button {
+    padding: 10px;
+    background: var(--forest-green);
+    color: var(--off-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.footer-newsletter button:hover {
+    background: #243d3d;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--stone-gray);
+    border-top: 1px solid #333;
+    padding-top: 20px;
 }
 
 @keyframes fadeIn {
@@ -358,7 +454,6 @@ footer {
     margin-top: 8px;
 }
 
-/* Scroll animation */
 @keyframes scrollLeft {
     0% {
         transform: translateX(0);
@@ -404,6 +499,94 @@ footer {
 .plan-your-stay .btn:hover {
     background: #203c3c;
 }
-.f-info-links{
+
+.f-info-links {
     text-decoration: none;
+}
+
+/* === Media Queries === */
+
+@media (max-width: 1024px) {
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section h3 {
+        font-size: 2.2rem;
+    }
+
+    .plan-your-stay h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        align-items: flex-start;
+    }
+
+    nav a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .section h3 {
+        font-size: 2rem;
+    }
+
+    .plan-your-stay h2 {
+        font-size: 1.8rem;
+    }
+
+    .testimonial-card {
+        min-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .section h3 {
+        font-size: 1.5rem;
+    }
+
+    .plan-your-stay h2 {
+        font-size: 1.5rem;
+    }
+
+    .plan-section a,
+    .plan-your-stay .btn,
+    .contact button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
 }

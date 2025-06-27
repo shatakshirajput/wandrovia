@@ -1,15 +1,164 @@
-<footer>
-    <div class="f-info">
-        <div class="f-info-socials">
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-square-twitter"></i>
-            <i class="fa-brands fa-linkedin"></i> 
+<style>
+    :root {
+        --forest-green: #2F4F4F;
+        --sand-beige: #EDE6DB;
+        --stone-gray: #8D8D8D;
+        --off-white: #FAFAF9;
+        --charcoal-black: #1A1A1A;
+    }
+
+    .footer {
+        background: var(--charcoal-black);
+        color: var(--sand-beige);
+        padding: 60px 20px 30px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .footer-branding h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .footer-branding p {
+        max-width: 300px;
+        font-size: 0.95rem;
+        color: var(--stone-gray);
+    }
+
+    .footer-socials a {
+        margin-right: 10px;
+        font-size: 1.3rem;
+        color: var(--sand-beige);
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+        transform: scale(1.2);
+        color: var(--forest-green);
+    }
+
+    .footer-links h4,
+    .footer-legal h4,
+    .footer-newsletter h4 {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        color: var(--off-white);
+    }
+
+    .footer-links ul,
+    .footer-legal ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links ul li,
+    .footer-legal ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links ul li a,
+    .footer-legal ul li a {
+        color: var(--stone-gray);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links ul li a:hover,
+    .footer-legal ul li a:hover {
+        color:#fff;
+    }
+
+    .footer-newsletter form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-newsletter input {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        outline: none;
+        background: var(--sand-beige);
+        color: var(--charcoal-black);
+    }
+
+    .footer-newsletter button {
+        padding: 10px;
+        background: var(--forest-green);
+        color: var(--off-white);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .footer-newsletter button:hover {
+        background: #243d3d;
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--stone-gray);
+        border-top: 1px solid #333;
+        padding-top: 20px;
+    }
+</style>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-branding">
+            <h2>Wanderlust</h2>
+            <p>Explore the world with ease. Your next adventure awaits!</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
         </div>
-        <div>&copy; Wandurlust Private Limited</div>
-        <div class="f-info-links">
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/listings">Destinations</a></li>
+                <li><a href="/listings">Bookings</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/help">Help Center</a></li>
+            </ul>
         </div>
+
+        <div class="footer-legal">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+                <li><a href="/cookies">Cookie Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-newsletter">
+            <h4>Stay Updated</h4>
+            <form>
+                <input type="email" placeholder="Enter your email" />
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Wanderlust Pvt. Ltd. | Made with ❤️ by Travel Lovers</p>
     </div>
 </footer>
