@@ -97,12 +97,9 @@ body {
 }
 
 /* card effect */
-.card-img-overlay {
-  opacity: 0;
-}
 
-.card-img-overlay:hover {
-  opacity: 0.2;
+.card :hover {
+  opacity: 0.8;
   background-color: white;
 }
 .card {

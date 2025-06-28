@@ -1,0 +1,119 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  .host-hero {
+    background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .host-hero:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9); 
+  }
+
+  .host-overlay {
+    background-color: rgba(26, 26, 26, 0.75);
+    padding: 3rem;
+    border-radius: 1rem;
+    max-width: 800px;
+    color: var(--off-white);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .host-btn {
+    margin: 1rem;
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .host-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+  }
+
+  .feature-card {
+    background-color: var(--forest-green);
+    border-radius: 1.5rem;
+    color: var(--off-white);
+    padding: 2rem 1.5rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    height: 100%;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(47, 79, 79, 0.7); /* Forest green gradient shadow */
+  }
+
+  .host-feature-icon {
+    font-size: 2.5rem;
+    color: var(--sand-beige);
+    margin-bottom: 1rem;
+  }
+
+  .host-features {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .feature-card {
+      margin-bottom: 2rem;
+    }
+  }
+</style>
+
+<div class="container mt-5">
+  <!-- HERO SECTION -->
+  <div class="host-hero">
+    <div class="host-overlay text-center">
+      <h1 class="display-4 fw-bold">Become a Host on Wandrovia</h1>
+      <p class="lead mb-4">Share your world, earn money, and help travelers find unique places to stay.</p>
+
+      <% if (!currUser) { %>
+        <a href="/login" class="btn btn-dark btn-lg host-btn">Login to Host</a>
+      <% } else { %>
+        <a href="/host/dashboard" class="btn btn-dark btn-lg host-btn">Go to Your Dashboard</a>
+      <% } %>
+      <a href="/listings" class="btn btn-outline-light btn-lg host-btn">Browse Listings</a>
+    </div>
+  </div>
+
+  <!-- FEATURE CARDS -->
+  <div class="row host-features justify-content-center gx-4 gy-4">
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa-solid fa-hand-holding-dollar host-feature-icon"></i>
+        <h5><strong>Earn Extra Income</strong></h5>
+        <p>Turn your space into a reliable source of income with full flexibility.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa-solid fa-globe host-feature-icon"></i>
+        <h5><strong>Reach Global Guests</strong></h5>
+        <p>Showcase your listing to travelers from around the world on Wandrovia.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card">
+        <i class="fa-solid fa-shield-halved host-feature-icon"></i>
+        <h5><strong>Stay Protected</strong></h5>
+        <p>We ensure secure bookings, identity verification, and fraud protection.</p>
+      </div>
+    </div>
+  </div>
+</div>

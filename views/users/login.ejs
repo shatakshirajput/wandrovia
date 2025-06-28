@@ -1,118 +1,43 @@
 <% layout('/layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/auth.css">
 
-<style>
-    body, html {
-        height: 100%;
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: #f0f2f5;
-    }
+<div class="auth-wrapper slide-in-right">
+  <!-- Left Card (Form) -->
+  <div class="auth-card form-side">
+    <h2>Login to Wandrovia</h2>
+    <form action="/login" method="POST">
+      <label class="form-label" for="username">Username</label>
+      <input class="form-control" type="text" id="username" name="username" required>
 
-    .login-container {
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
-    }
+      <label class="form-label" for="password">Password</label>
+      <input class="form-control" type="password" id="password" name="password" required>
 
-    .login-left {
-        flex: 4;
-        background: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: slideIn 1s ease-out forwards;
-        transform: translateX(-100%);
-        opacity: 0;
-    }
+      <button class="btn-auth" type="submit">Login</button>
+    </form>
+  </div>
 
-    .login-right {
-        flex: 6;
-        background: url("/loginpageimage.jpg") no-repeat center center;
-        background-size: cover;
-        animation: fadeIn 1.2s ease-in-out;
-    }
-
-    @keyframes slideIn {
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    .login-box {
-        width: 100%;
-        max-width: 350px;
-        padding: 40px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        border-radius: 12px;
-    }
-
-    h2 {
-        font-weight: 700;
-        margin-bottom: 30px;
-        color: #333;
-        text-align: center;
-    }
-
-    .form-label {
-        font-weight: 600;
-        color: #555;
-        margin-bottom: 6px;
-        display: block;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 12px 14px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        margin-bottom: 20px;
-        transition: border-color 0.3s;
-    }
-
-    .form-control:focus {
-        outline: none;
-        border-color: #30b862;
-    }
-
-    .btn-login {
-        background-color: #30b862;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 14px;
-        font-weight: 600;
-        font-size: 16px;
-        width: 100%;
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-
-    .btn-login:hover {
-        transform: scale(1.03);
-        background-color: #27a755;
-    }
-</style>
-
-<div class="login-container">
-    <div class="login-left">
-        <div class="login-box">
-            <h2>Login to Wandrovia</h2>
-            <form action="/login" method="post" class="needs-validation" novalidate>
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-
-                <button type="submit" class="btn btn-login">Login</button>
-            </form>
-        </div>
+  <!-- Right Card (Quote + Sign Up) -->
+  <div class="auth-card info-side">
+    <div class="info-content">
+      <h2 class="typing-text"></h2>
     </div>
-    <div class="login-right"></div>
+    <div class="info-footer">
+      <p>Don’t have an account?</p>
+      <a href="/signup" class="btn-switch">Sign Up</a>
+    </div>
+  </div>
 </div>
+
+<script>
+  const text = "Start your journey with Wandrovia.";
+  const el = document.querySelector(".typing-text");
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 50);
+    }
+  }
+  window.onload = type;
+</script>
