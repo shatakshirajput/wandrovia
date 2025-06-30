@@ -14,20 +14,9 @@
         <div class="col-md-6 p-4">
           <div class="d-flex justify-content-between align-items-start">
             <h4 class="mb-1"><b><%= listing.title %></b></h4>
-            <span class="text-warning fw-semibold"><i class="fa fa-star"></i> <%= listing.avgRating?.toFixed(1) || 'N/A' %></span>
           </div>
           <p class="text-muted mb-1"><%= listing.location %>, <%= listing.country %></p>
           <p><i>Owned by <%= listing.owner.username %></i></p>
-          <p><%= listing.description %></p>
-          <div class="mb-2">
-            <% if(listing.tags && listing.tags.length > 0) { %>
-              <% listing.tags.forEach(tag => { %>
-                <span class="badge bg-light text-dark border me-1 mb-1"><%= tag %></span>
-              <% }) %>
-            <% } else { %>
-              <span class="text-muted">No tags available</span>
-            <% } %>
-          </div>
           <p class="fw-bold fs-5 text-dark">₹<%= listing.price.toLocaleString("en-IN") %> <span class="fw-normal fs-6 text-muted">/ night</span></p>
 
           <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
@@ -44,7 +33,20 @@
       </div>
     </div>
 
-    <div class="col-md-6 offset-md mt-5 mb-3">
+    <div>
+      <p><%= listing.description %></p>
+      <% if (!currentUser || (currentUser._id.toString() !== listing.owner._id.toString())) { %>
+      <form action="/reserve" method="GET">
+      <input type="hidden" name="listingId" value="<%= listing._id %>">
+        <button class="btn w-100 py-3 text-white fw-semibold fs-5 rounded-pill"
+          style="background: linear-gradient(to right, #96bfbf, #3d6d6d); border: none;">
+          Reserve
+        </button>
+      </form>
+      <% } %>
+    </div>
+
+    <div class=" offset-md mt-5 mb-3">
       <h3><b>Where you'll be</b></h3>
       <div id="map" style="width: 100%; height: 300px;" class="rounded-4 shadow-sm"></div>
     </div>

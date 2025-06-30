@@ -84,7 +84,7 @@
       <p class="lead mb-4">Share your world, earn money, and help travelers find unique places to stay.</p>
 
       <% if (!currUser) { %>
-        <a href="/login" class="btn btn-dark btn-lg host-btn">Login to Host</a>
+        <a href="/login?redirect=/host/dashboard" class="btn btn-dark btn-lg host-btn">Login to Host</a>
       <% } else { %>
         <a href="/host/dashboard" class="btn btn-dark btn-lg host-btn">Go to Your Dashboard</a>
       <% } %>

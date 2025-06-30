@@ -1,11 +1,15 @@
 <% layout('/layouts/boilerplate') %>
 <link rel="stylesheet" href="/css/auth.css">
 
+<% const redirectTo = typeof query.redirect !== "undefined" ? query.redirect : "/listings"; %>
+
 <div class="auth-wrapper slide-in-right">
   <!-- Left Card (Form) -->
   <div class="auth-card form-side">
     <h2>Login to Wandrovia</h2>
     <form action="/login" method="POST">
+      <input type="hidden" name="redirectTo" value="<%= redirectTo %>">
+
       <label class="form-label" for="username">Username</label>
       <input class="form-control" type="text" id="username" name="username" required>
 

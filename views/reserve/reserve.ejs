@@ -1,0 +1,32 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="container py-5">
+    <h2 class="mb-4">Reserve This Place</h2>
+
+    <form action="/reserve?listingId=<%= listingId %>" method="POST" class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Check-in</label>
+            <input type="date" name="checkIn" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Check-out</label>
+            <input type="date" name="checkOut" class="form-control" required>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Guests</label>
+            <input type="number" name="guests" class="form-control" value="1" min="1" required>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Additional Info</label>
+            <textarea class="form-control" name="info" rows="3"></textarea>
+            <br>
+            <p><i><b>Note:</b> You have to pay when you check in.</i></p>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn w-100 py-3 text-white fw-bold"
+                style="background: linear-gradient(to right, #4c5f5f, #3d6d6d); border: none;">
+                Confirm Booking
+            </button>
+        </div>
+    </form>
+</div>

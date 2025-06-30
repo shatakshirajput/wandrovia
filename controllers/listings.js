@@ -29,7 +29,7 @@ module.exports.showListings=async (req,res)=>{
         res.redirect("/listings");
     }
     console.log(listing);
-    res.render("listings/show.ejs",{listing});
+    res.render("listings/show.ejs",{listing,currentUser: req.user });
 };
 module.exports.createListings=async(req,res)=>{
     // let result = listingSchema.validate(req.body);

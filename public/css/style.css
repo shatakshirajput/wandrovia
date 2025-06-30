@@ -4,6 +4,10 @@
   --stone-gray: #8D8D8D;
   --off-white: #FAFAF9;
   --charcoal-black: #1A1A1A;
+
+  --card-radius: 1rem;
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.3s ease;
 }
 
 body {
@@ -21,7 +25,7 @@ body {
   flex: 1;
 }
 
-/* navbar */
+/* Navbar */
 .navbar {
   height: 5rem;
   background-color: var(--forest-green);
@@ -35,9 +39,10 @@ body {
 .nav-link {
   color: var(--off-white) !important;
   font-weight: 500 !important;
+  margin-right: 2rem;
 }
 
-/* footer */
+/* Footer */
 .f-info-links a {
   text-decoration: none;
   color: var(--charcoal-black);
@@ -72,20 +77,40 @@ body {
   align-items: space-evenly;
 }
 
-/* cards */
+/* Cards */
 .card {
   border: none !important;
   margin-bottom: 2rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.025);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card-img-top {
-  border-radius: 1rem !important;
+  height: 20rem;
+  border-radius: var(--card-radius) var(--card-radius) 0 0 !important;
   width: 100%;
   object-fit: cover !important;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.03);
 }
 
 .card-body {
-  padding: 0 !important;
+  padding: 1rem;
+  background-color: white;
+  transition: background-color var(--transition-fast);
+}
+
+.card-body:hover {
+  background-color: #fefefe;
 }
 
 .card-text {
@@ -96,31 +121,42 @@ body {
   text-decoration: none;
 }
 
-/* card effect */
+/* Heart Button on Cards */
+.card .btn.position-absolute {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
-.card :hover {
-  opacity: 0.8;
-  background-color: white;
+.card .btn.position-absolute:hover {
+  background-color: var(--sand-beige);
+  transform: scale(1.1);
 }
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
+
+/* Badge Tags */
 .badge {
   font-size: 0.75rem;
   padding: 0.4em 0.6em;
+  border-radius: 0.5rem;
+  background-color: var(--off-white);
+  border: 1px solid var(--stone-gray);
 }
 
-
+/* Add Listing Button */
 .add-btn {
   background-color: var(--forest-green) !important;
   border: none !important;
+  color: white;
+  padding: 10px 20px;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-/* show page */
+.add-btn:hover {
+  background-color: #1c3c3c !important;
+  transform: translateY(-2px);
+}
+
+/* Show Page */
 .show-img {
   height: 30vh;
 }
@@ -133,11 +169,7 @@ body {
   margin: 0.5rem;
 }
 
-.add-btn {
-  color: white;
-  background-color: #346e6e !important;
-}
-
+/* Filter section */
 .filter {
   text-align: center;
   margin: 0.5rem;
@@ -156,12 +188,16 @@ body {
   flex-direction: column;
   align-items: center;
   opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .filter a:hover {
   opacity: 1;
+  transform: translateY(-2px);
 }
 
-.card-img-top {
-  height: 20rem;
+/* Collapse Button for Mobile Filters */
+button[data-bs-toggle="collapse"] {
+  margin-bottom: 1rem;
+  font-weight: 500;
 }

@@ -1,0 +1,148 @@
+:root {
+  --forest-green: #2F4F4F;
+  --off-white: #FAFAF9;
+  --dark-text: #1A1A1A;
+  --input-border: #ccc;
+  --accent: #EDE6DB;
+  --btn-dark: #222;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--off-white);
+}
+
+/* Wrapper: Add more width space */
+.host-full-wrapper {
+  padding: 60px 80px;
+  background-color: var(--off-white);
+  min-height: 100vh;
+}
+
+/* Card: Make bigger + spacious */
+.host-full-card {
+  max-width: 1100px; /* increased from 100% */
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 20px;
+  padding: 50px 70px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Header text */
+.host-header {
+  margin-bottom: 30px;
+}
+
+.host-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: 8px;
+}
+
+.host-subtitle {
+  font-size: 17px;
+  color: #555;
+}
+
+/* Form layout */
+.host-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label text */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--dark-text);
+}
+
+/* Normal input */
+.form-control {
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1.5px solid var(--input-border);
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus effect */
+.form-control:focus {
+  outline: none;
+  border-color: var(--forest-green);
+}
+
+/* Upload Field Special Styling */
+input[type="file"].form-control {
+  padding: 16px;
+  border: 2px dashed #aaa;
+  text-align: center;
+  background-color: #f9f9f9;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+input[type="file"].form-control:hover {
+  background-color: #f1f1f1;
+  border-color: var(--forest-green);
+}
+
+/* Button */
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-next {
+  padding: 14px 30px;
+  background-color: var(--btn-dark);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-next:hover {
+  background-color: #111;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .host-full-wrapper {
+    padding: 40px 20px;
+  }
+
+  .host-full-card {
+    padding: 30px 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .btn-container {
+    justify-content: center;
+  }
+}

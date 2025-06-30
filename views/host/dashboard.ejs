@@ -58,72 +58,80 @@
     }
 </style>
 
-    <div class="container">
-        <!-- Dashboard Hero Section -->
-        <div class="dashboard-hero">
-            <h1>Welcome to Your Host Dashboard</h1>
-            <p class="lead mt-2">Manage your listings and add new stays for guests to explore.</p>
-            <a href="/listings/new" class="dashboard-btn"> Add New Listing</a>
-        </div>
+<div class="container">
+    <div class="dashboard-hero">
+        <h1>Welcome to Your Host Dashboard</h1>
+        <p class="lead mt-2">Manage your listings and add new stays for guests to explore.</p>
+        <a href="/listings/new" class="dashboard-btn"> Add New Listing</a>
+    </div>
 
-        <!-- Existing Listings Section -->
-        <% if (userListings && userListings.length> 0) { %>
-            <h3 class="mt-5 mb-4 fw-bold text-center">Your Existing Listings</h3>
-            <div class="d-flex flex-column gap-4 mb-5">
+    <% if (listingsWithBookings && listingsWithBookings.length > 0) { %>
+        <h3 class="mt-5 mb-4 fw-bold text-center">Your Listings & Their Bookings</h3>
+        <div class="d-flex flex-column gap-4 mb-5">
 
-                <% userListings.forEach(listing=> { %>
-                    <div class="card shadow-sm d-flex flex-row overflow-hidden rounded-4" style="min-height: 200px;">
+            <% listingsWithBookings.forEach(item => { %>
+                <div class="card shadow-sm d-flex flex-row overflow-hidden rounded-4" style="min-height: 200px;">
 
-                        <!-- Image -->
-                        <div class="col-md-4" style="max-width: 300px;">
-                            <img src="<%= listing.image.url %>" class="img-fluid h-100 object-fit-cover"
-                                style="width: 100%; object-fit: cover;" alt="Listing image">
+                    <!-- Image -->
+                    <div class="col-md-4" style="max-width: 300px;">
+                        <img src="<%= item.listing.image.url %>" class="img-fluid h-100 object-fit-cover"
+                            style="width: 100%; object-fit: cover;" alt="Listing image">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="col-md-8 p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-1 fw-bold"><%= item.listing.title %></h5>
+                            </div>
+                            <p class="text-muted mb-1"><%= item.listing.location %></p>
+                            <p class="fst-italic">Owned by <%= item.listing.owner.username %></p>
+                            <p><%= item.listing.description.substring(0, 150) %>...</p>
+                            <p class="text-muted small">
+                                <% if (item.listing.category) { %>
+                                    <%= item.listing.category %>
+                                <% } else { %>
+                                    No tags available
+                                <% } %>
+                            </p>
+
+                            <!-- Bookings Section -->
+                            <% if (item.bookings.length > 0) { %>
+                                <hr>
+                                <h6 class="fw-semibold">Bookings:</h6>
+                                <ul class="list-group mb-2">
+                                    <% item.bookings.forEach(booking => { %>
+                                        <li class="list-group-item">
+                                            <strong>By:</strong> <%= booking.user.username || booking.user.email %><br>
+                                            <strong>Guests:</strong> <%= booking.guests %> |
+                                            <strong>Check-in:</strong> <%= booking.checkIn.toDateString() %> |
+                                            <strong>Check-out:</strong> <%= booking.checkOut.toDateString() %>
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            <% } else { %>
+                                <p class="text-muted small">No bookings yet.</p>
+                            <% } %>
                         </div>
 
-                        <!-- Content -->
-                        <div class="col-md-8 p-4 d-flex flex-column justify-content-between">
+                        <!-- Price & Buttons -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <span class="fw-semibold text-dark">&#8377;<%= item.listing.price.toLocaleString("en-IN") %>
+                                <span class="text-muted">/ night</span>
+                            </span>
                             <div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-1 fw-bold">
-                                        <%= listing.title %>
-                                    </h5>
-                                </div>
-                                <p class="text-muted mb-1">
-                                    <%= listing.location %>
-                                </p>
-                                <p class="fst-italic">Owned by <%= listing.owner.username %>
-                                </p>
-                                <p>
-                                    <%= listing.description.substring(0, 150) %>...
-                                </p>
-                                <p class="text-muted small">
-                                    <% if (listing.category) { %>
-                                        <%= listing.category %>
-                                            <% } else { %>
-                                                No tags available
-                                                <% } %>
-                                </p>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                                <span class="fw-semibold text-dark">&#8377;<%= listing.price.toLocaleString("en-IN") %>
-                                        <span class="text-muted">/ night</span></span>
-                                <div>
-                                    <a href="/listings/<%= listing._id %>/edit"
-                                        class="btn btn-sm btn-outline-dark me-2">Edit</a>
-                                    <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST"
-                                        class="d-inline">
-                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
-                                    </form>
-                                </div>
+                                <a href="/listings/<%= item.listing._id %>/edit" class="btn btn-sm btn-outline-dark me-2">Edit</a>
+                                <form action="/listings/<%= item.listing._id %>?_method=DELETE" method="POST" class="d-inline">
+                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <% }); %>
-            </div>
+                </div>
+            <% }) %>
+        </div>
 
-            <% } else { %>
-                <p class="text-center mt-5 text-muted">You haven't added any listings yet. Start by adding your first
-                    one!</p>
-                <% } %>
-    </div>
+    <% } else { %>
+        <p class="text-center mt-5 text-muted">You haven't added any listings yet. Start by adding your first one!</p>
+    <% } %>
+</div>

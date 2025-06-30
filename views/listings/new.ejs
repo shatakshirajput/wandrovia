@@ -1,80 +1,66 @@
 <% layout('/layouts/boilerplate') %>
-<div class="row">
-    <div class="col-8 offset-2">
-        <br><br>
-        <h3>Create a New Listing</h3>
-        <br>
-        <form action="/listings" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title:</label>
-                <input type="text" name="listing[title]" , placeholder="Enter title" class="form-control" required>
-                <div class="valid-feedback">
-                    Title looks good
-                </div>
-                <div class="invalid-feedback">
-                    please enter the title
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description:</label>
-                <input type="text" name="listing[description]" , placeholder="Enter description"
-                        class="form-control" required>
-                <div class="valid-feedback">
-                    Description looks good
-                </div>
-                <div class="invalid-feedback">
-                    please enter the description
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Upload listing image:</label>
-                <input type="file" name="listing[image][url]" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <select
-                  name="listing[category]"
-                  id="category"
-                  class="form-control"
-                  required
-                >
-                  <option value="" disabled selected>Select a category</option>
-                  <option value="Trendings">Trendings</option>
-                  <option value="Rooms">Rooms</option>
-                  <option value="Iconic Cities">Iconic Cities</option>
-                  <option value="Mountains">Mountains</option>
-                  <option value="Castles">Castles</option>
-                  <option value="Amazing Pools">Amazing Pools</option>
-                  <option value="Camping">Camping</option>
-                  <option value="Farms">Farms</option>
-                  <option value="Arctic">Arctic</option>
-                </select>
-              </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Price:</label>
-                <input type="number" name="listing[price]" , placeholder="1,500/night" class="form-control" required>
-                <div class="valid-feedback">
-                    Looks good
-                </div>
-                <div class="invalid-feedback">
-                    please enter the price
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="location" class="form-label">Location:</label>
-                <input type="text" name="listing[location]" , placeholder="Enter location" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="country" class="form-label">Country:</label>
-                <input type="text" name="listing[country]" , placeholder="India" class="form-control" required>
-                <div class="valid-feedback">
-                    Country name looks good
-                </div>
-                <div class="invalid-feedback">
-                    please enter the Country name
-                </div>
-            </div><br><br>
-            <button class="btn btn-dark add-btn">Submit</button><br><br><br>
-        </form>
+<link rel="stylesheet" href="/css/newListing.css">
+
+<div class="host-full-wrapper">
+  <div class="host-full-card">
+    <div class="host-header">
+      <h1 class="host-title">Create a New Listing</h1>
+      <p class="host-subtitle">Tell us about your place and start hosting today.</p>
     </div>
+
+    <form action="/listings" method="POST" enctype="multipart/form-data" class="host-form needs-validation" novalidate>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Title</label>
+          <input type="text" name="listing[title]" class="form-control" placeholder="e.g. Peaceful cabin retreat" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <input type="text" name="listing[description]" class="form-control" placeholder="Short description..." required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Upload Image</label>
+          <input type="file" name="listing[image][url]" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select name="listing[category]" class="form-control" required>
+            <option disabled selected>Select a category</option>
+            <option value="Trendings">Trendings</option>
+            <option value="Rooms">Rooms</option>
+            <option value="Iconic Cities">Iconic Cities</option>
+            <option value="Mountains">Mountains</option>
+            <option value="Castles">Castles</option>
+            <option value="Amazing Pools">Amazing Pools</option>
+            <option value="Camping">Camping</option>
+            <option value="Farms">Farms</option>
+            <option value="Arctic">Arctic</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Price (INR)</label>
+          <input type="number" name="listing[price]" class="form-control" placeholder="e.g. 1500/night" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Location</label>
+          <input type="text" name="listing[location]" class="form-control" placeholder="City / Area">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Country</label>
+          <input type="text" name="listing[country]" class="form-control" placeholder="e.g. India" required>
+        </div>
+      </div>
+
+      <div class="btn-container">
+        <button type="submit" class="btn-next">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>
