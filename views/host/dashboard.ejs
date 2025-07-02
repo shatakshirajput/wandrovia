@@ -60,7 +60,7 @@
 
 <div class="container">
     <div class="dashboard-hero">
-        <h1>Welcome to Your Host Dashboard</h1>
+        <h1>Welcome to Your Host Dashboard, <%= host.username || host.name || host.email %>!</h1>
         <p class="lead mt-2">Manage your listings and add new stays for guests to explore.</p>
         <a href="/listings/new" class="dashboard-btn"> Add New Listing</a>
     </div>
@@ -85,7 +85,7 @@
                                 <h5 class="mb-1 fw-bold"><%= item.listing.title %></h5>
                             </div>
                             <p class="text-muted mb-1"><%= item.listing.location %></p>
-                            <p class="fst-italic">Owned by <%= item.listing.owner.username %></p>
+                            <p class="fst-italic">Owned by <%= host.username || host.name || host.email %></p>
                             <p><%= item.listing.description.substring(0, 150) %>...</p>
                             <p class="text-muted small">
                                 <% if (item.listing.category) { %>

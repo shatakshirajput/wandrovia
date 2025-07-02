@@ -14,5 +14,5 @@ module.exports.renderHostDashboard = async (req, res) => {
     })
   );
 
-  res.render("host/dashboard", { listingsWithBookings });
+  res.render("host/dashboard", { listingsWithBookings,host: req.user });
 };

@@ -18,7 +18,7 @@ router.get('/dashboard', isLoggedIn, async (req, res) => {
             return { listing, bookings };
         })
     );
-    res.render('host/dashboard', { listingsWithBookings });
+    res.render('host/dashboard', { listingsWithBookings,host: req.user });
 });
 
 module.exports = router;
