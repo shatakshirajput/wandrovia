@@ -1,0 +1,44 @@
+<% layout('/layouts/boilerplate') %>
+
+  <body>
+    <div class="container mt-4 mb-5">
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+        <% for (let listing of wishlistListings) { %>
+          <div class="col">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+              <div class="position-relative">
+                <img src="<%= listing.image.url %>" class="card-img-top rounded-top-4"
+                  style="height: 250px; object-fit: cover;" alt="listing-image">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="fw-semibold fs-5">
+                    <%= listing.title %>
+                  </span>
+                </div>
+                <p class="text-muted mb-1">
+                  <%= listing.location %>
+                </p>
+
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <% if(listing.tags && listing.tags.length> 0) { %>
+                    <% listing.tags.slice(0, 3).forEach(tag=> { %>
+                      <span class="badge bg-light text-dark border">
+                        <%= tag %>
+                      </span>
+                      <% }) %>
+                        <% } %>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                  <p class="fw-bold mb-0 fs-5">₹<%= listing.price.toLocaleString("en-IN") %> <span
+                        class="text-muted fw-normal fs-6">/ night</span></p>
+                  <a href="/listings/<%= listing._id %>" class="btn btn-sm view-details">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+      </div>
+    </div>
+  </body>

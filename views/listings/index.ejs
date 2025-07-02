@@ -1,108 +1,138 @@
 <% layout('/layouts/boilerplate') %>
-<body>
-  <div class="container filters mt-4">
-    <button
-      class="btn add-btn d-lg-none"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#filterCollapse"
-      aria-expanded="false"
-      aria-controls="filterCollapse"
-    >
-      Filters
-    </button>
-    <div class="collapse d-lg-flex flex-wrap" id="filterCollapse">
-      <div class="filter">
-        <a href="/listings?category=Trendings" class="btn btn-category">
-          <div><i class="fa-solid fa-fire"></i></div>
-          <p>Trendings</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Rooms" class="btn btn-category">
-          <div><i class="fa-solid fa-bed"></i></div>
-          <p>Rooms</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Iconic Cities" class="btn btn-category">
-          <div><i class="fa-solid fa-mountain-city"></i></div>
-          <p>Iconic Cities</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Mountains" class="btn btn-category">
-          <div><i class="fa-solid fa-mountain"></i></div>
-          <p>Mountains</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Castles" class="btn btn-category">
-          <div><i class="fa-brands fa-fort-awesome"></i></div>
-          <p>Castles</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Amazing Pools" class="btn btn-category">
-          <div><i class="fa-solid fa-person-swimming"></i></div>
-          <p>Amazing Pools</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Camping" class="btn btn-category">
-          <div><i class="fa-solid fa-campground"></i></div>
-          <p>Camping</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Farms" class="btn btn-category">
-          <div><i class="fa-solid fa-tractor"></i></div>
-          <p>Farms</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Arctic" class="btn btn-category">
-          <div><i class="fa-regular fa-snowflake"></i></div>
-          <p>Arctic</p>
-        </a>
+
+  <body>
+    <div class="container filters mt-4">
+      <button class="btn add-btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse"
+        aria-expanded="false" aria-controls="filterCollapse">
+        Filters
+      </button>
+      <div class="collapse d-lg-flex flex-wrap" id="filterCollapse">
+        <div class="filter">
+          <a href="/listings?category=Trendings" class="btn btn-category">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trendings</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Rooms" class="btn btn-category">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Iconic Cities" class="btn btn-category">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic Cities</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Mountains" class="btn btn-category">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountains</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Castles" class="btn btn-category">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Amazing Pools" class="btn btn-category">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing Pools</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Camping" class="btn btn-category">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Farms" class="btn btn-category">
+            <div><i class="fa-solid fa-tractor"></i></div>
+            <p>Farms</p>
+          </a>
+        </div>
+        <div class="filter">
+          <a href="/listings?category=Arctic" class="btn btn-category">
+            <div><i class="fa-regular fa-snowflake"></i></div>
+            <p>Arctic</p>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="container mt-4 mb-5">
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
-      <% for (let listing of allListings) { %>
-        <div class="col">
-          <div class="card shadow-sm border-0 rounded-4 h-100">
-            <div class="position-relative">
-              <img src="<%= listing.image.url %>" class="card-img-top rounded-top-4" style="height: 250px; object-fit: cover;" alt="listing-image">
-              <button class="btn position-absolute top-0 end-0 m-2 p-1 bg-light rounded-circle">
-                <i class="fa-regular fa-heart text-dark"></i>
-              </button>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between mb-1">
-                <span class="fw-semibold fs-5"><%= listing.title %></span>
-                <span class="text-warning"><i class="fa fa-star"></i> <%= listing.avgRating?.toFixed(1) || "4.8" %></span>
+    <div class="container mt-4 mb-5">
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+        <% for (let listing of allListings) { %>
+          <div class="col">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+              <div class="position-relative">
+                <img src="<%= listing.image.url %>" class="card-img-top rounded-top-4"
+                  style="height: 250px; object-fit: cover;" alt="listing-image">
+                <button
+                  class="wishlist-btn position-absolute top-0 end-0 m-2 px-3 py-2 rounded-pill d-flex align-items-center gap-2"
+                  data-id="<%= listing._id %>">
+                  <i class="fa-regular fa-heart wishlist-icon"></i>
+                  <span class="wishlist-text">Add to Wishlist</span>
+                </button>
+
               </div>
-              <p class="text-muted mb-1"><%= listing.location %></p>
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="fw-semibold fs-5">
+                    <%= listing.title %>
+                  </span>
+                </div>
+                <p class="text-muted mb-1">
+                  <%= listing.location %>
+                </p>
 
-              <div class="d-flex flex-wrap gap-1 mb-2">
-                <% if(listing.tags && listing.tags.length > 0) { %>
-                  <% listing.tags.slice(0, 3).forEach(tag => { %>
-                    <span class="badge bg-light text-dark border"><%= tag %></span>
-                  <% }) %>
-                <% } %>
-              </div>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <% if(listing.tags && listing.tags.length> 0) { %>
+                    <% listing.tags.slice(0, 3).forEach(tag=> { %>
+                      <span class="badge bg-light text-dark border">
+                        <%= tag %>
+                      </span>
+                      <% }) %>
+                        <% } %>
+                </div>
 
-              <div class="d-flex justify-content-between align-items-center mt-auto">
-                <p class="fw-bold mb-0 fs-5">₹<%= listing.price.toLocaleString("en-IN") %> <span class="text-muted fw-normal fs-6">/ night</span></p>
-                <a href="/listings/<%= listing._id %>" class="btn btn-sm btn-dark">View Details</a>
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                  <p class="fw-bold mb-0 fs-5">₹<%= listing.price.toLocaleString("en-IN") %> <span
+                        class="text-muted fw-normal fs-6">/ night</span></p>
+                  <a href="/listings/<%= listing._id %>" class="btn btn-sm view-details">View Details</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% } %>
+          <% } %>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const listingId = btn.dataset.id;
+
+        const res = await fetch(`/wishlist/toggle/${listingId}`, {
+          method: "POST"
+        });
+
+        const data = await res.json();
+
+        if (data.wishlisted) {
+          btn.classList.add('active');
+          btn.querySelector('.wishlist-text').textContent = "Added to Wishlist";
+        } else {
+          btn.classList.remove('active');
+          btn.querySelector('.wishlist-text').textContent = "Add to Wishlist";
+        }
+      });
+    });
+  });
+</script>

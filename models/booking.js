@@ -22,4 +22,17 @@ const bookingSchema = new Schema({
   }
 });
 
+setInterval(async () => {
+  try {
+    const result = await Booking.deleteMany({
+      checkOut: { $lt: new Date() }
+    });
+    if (result.deletedCount > 0) {
+      console.log(`Automatically deleted ${result.deletedCount} expired bookings`);
+    }
+  } catch (err) {
+    console.error("Error during automatic booking cleanup:", err);
+  }
+}, 3600000); 
+
 module.exports = mongoose.model("Booking", bookingSchema);

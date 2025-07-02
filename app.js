@@ -19,8 +19,9 @@ const LocalStrategy = require("passport-local");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
-const hostRoutes = require('./routes/host'); // ✅ host route (moved down below session)
+const hostRoutes = require('./routes/host');
 const reserveRoutes = require("./routes/reserve");
+const wishlistRoutes = require("./routes/wishlist");
 
 const User = require("./models/user.js");
 
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.mapToken = process.env.MAP_TOKEN;
+    res.locals.currentRoute = req.path;
     next();
 });
 
@@ -89,6 +91,7 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 app.use('/host', hostRoutes); 
 app.use("/reserve", reserveRoutes);
+app.use("/wishlist", wishlistRoutes);
 
 // Error handling
 app.all("*", (req, res, next) => {

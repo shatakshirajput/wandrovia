@@ -16,6 +16,8 @@
           <a class="nav-link" href="/login?redirect=/host/dashboard">Login as Host</a>
           <% } %>
           <% if(currUser){ %>
+          <a class="nav-link <% if (currentRoute === '/wishlist') { %>active<% } %>" href="/wishlist">My WishList</a>
+          <a class="nav-link" href="/reserve/bookings">My Bookings</a>
           <a class="nav-link" href="/logout">Log out</a>
           <% } %>
         </div>

@@ -9,26 +9,61 @@ module.exports.renderReservePage = (req, res) => {
   res.render("reserve/reserve", { listingId });
 };
 
-
 module.exports.createBooking = async (req, res) => {
-  const { checkIn, checkOut, guests, info } = req.body;
-  const listingId = req.query.listingId;
-  const userId = req.user._id;
+  try {
+    const { checkIn, checkOut, guests, info } = req.body;
+    const listingId = req.query.listingId;
+    const userId = req.user._id;
 
-  const booking = new Booking({
-    user: userId,
-    listing: listingId,
-    checkIn,
-    checkOut,
-    guests,
-    info
-  });
+    const booking = new Booking({
+      user: userId,
+      listing: listingId,
+      checkIn,
+      checkOut,
+      guests,
+      info
+    });
 
-  await booking.save();
-  res.redirect("/reserve/bookings");
+    await booking.save();
+    req.flash("success", "Booking created successfully!");
+    res.redirect("/reserve/bookings");
+  } catch (err) {
+    console.error("Error creating booking:", err);
+    req.flash("error", "Failed to create booking.");
+    res.redirect("/listings");
+  }
 };
 
 module.exports.viewUserBookings = async (req, res) => {
-  const bookings = await Booking.find({ user: req.user._id }).populate("listing");
-  res.render("reserve/bookings", { bookings });
+  try {
+    const bookings = await Booking.find({ user: req.user._id }).populate("listing");
+    res.render("reserve/bookings", { bookings });
+  } catch (err) {
+    console.error("Error fetching user bookings:", err);
+    req.flash("error", "Unable to fetch your bookings.");
+    res.redirect("/listings");
+  }
+};
+
+module.exports.deleteBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const booking = await Booking.findById(id);
+    if (!booking) {
+      req.flash("error", "Booking not found!");
+      return res.redirect("/reserve/bookings");
+    }
+    if (!booking.user.equals(req.user._id)) {
+      req.flash("error", "You do not have permission to delete this booking.");
+      return res.redirect("/reserve/bookings");
+    }
+
+    await Booking.findByIdAndDelete(id);
+    req.flash("success", "Booking deleted successfully.");
+    res.redirect("/reserve/bookings");
+  } catch (err) {
+    console.error("Error deleting booking:", err);
+    req.flash("error", "Failed to delete booking.");
+    res.redirect("/reserve/bookings");
+  }
 };

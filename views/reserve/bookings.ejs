@@ -11,14 +11,32 @@
                 <div class="col">
                     <div class="card shadow-sm h-100">
                         <div class="card-body">
-                            <h5 class="card-title"><%= booking.listing.title %></h5>
-                            <p class="card-text">
-                                <strong>Check-in:</strong> <%= booking.checkIn.toDateString() %><br>
-                                <strong>Check-out:</strong> <%= booking.checkOut.toDateString() %><br>
-                                <strong>Guests:</strong> <%= booking.guests %><br>
-                                <strong>Additional Info:</strong> <%= booking.info || "N/A" %>
-                            </p>
-                            <p class="text-muted small mb-0">Reserved on <%= booking.createdAt.toDateString() %></p>
+
+                            <% if (booking.listing) { %>
+                                <h5 class="card-title"><%= booking.listing.title %></h5>
+                                <p class="card-text">
+                                    <strong>Check-in:</strong> <%= booking.checkIn.toDateString() %><br>
+                                    <strong>Check-out:</strong> <%= booking.checkOut.toDateString() %><br>
+                                    <strong>Guests:</strong> <%= booking.guests %><br>
+                                    <strong>Additional Info:</strong> <%= booking.info || "N/A" %>
+                                </p>
+                                <p class="text-muted small mb-2">
+                                    Reserved on <%= booking.createdAt.toDateString() %>
+                                </p>
+                                <form action="/reserve/bookings/<%= booking._id %>?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                                        Cancel Booking
+                                    </button>
+                                </form>
+                            <% } else { %>
+                                <h5 class="card-title text-danger">Listing not found</h5>
+                                <p class="text-muted">This listing has been removed or is no longer available.</p>
+                                <form action="/reserve/bookings/<%= booking._id %>?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                                        Remove Entry
+                                    </button>
+                                </form>
+                            <% } %>
                         </div>
                     </div>
                 </div>
