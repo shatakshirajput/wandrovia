@@ -504,6 +504,119 @@ nav a:hover::after {
     text-decoration: none;
 }
 
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #1A1A1A;
+    z-index: 1001 !important;
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-bars {
+    display: none !important;
+    color: #1A1A1A;
+    width: 2rem !important;
+    height: 2rem !important;
+}
+
+#nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block !important;
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 999;
+        color: var(--charcoal-black);
+    }
+
+    .fa-bars{
+        display: block !important;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        align-items: flex-start;
+    }
+
+    #nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: rgba(255, 255, 255, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    #nav-links.active {
+        display: flex;
+    }
+
+    #nav-links a {
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-track {
+        animation: scrollLeftFast 20s linear infinite;
+    }
+}
+
+@keyframes scrollLeftFast {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Faster testimonial scroll on mobile */
+@media (max-width: 480px) {
+    .testimonials-track {
+        animation: scrollLeftFast 20s linear infinite;
+    }
+}
+
+@keyframes scrollLeftFast {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
 /* === Media Queries === */
 
 @media (max-width: 1024px) {

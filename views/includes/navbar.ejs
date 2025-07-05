@@ -1,26 +1,236 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" href="/">Home</a>
-          <a class="nav-link" href="/listings">Browse Listings</a>
-        </div>
-          
-        <div class="navbar-nav ms-auto">
-          <% if(!currUser){ %>
-          <a class="nav-link" href="/login">Log in</a>
-          <a class="nav-link" href="/login?redirect=/host/dashboard">Login as Host</a>
-          <% } %>
-          <% if(currUser){ %>
-          <a class="nav-link <% if (currentRoute === '/wishlist') { %>active<% } %>" href="/wishlist">My WishList</a>
-          <a class="nav-link" href="/reserve/bookings">My Bookings</a>
-          <a class="nav-link" href="/logout">Log out</a>
-          <% } %>
-        </div>
-      </div>
+<style>
+  /* Fix mobile drawer z-index and styling */
+.mobile-drawer {
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 1rem 0;
+}
+
+/* Drawer Styles */
+.mobile-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  right: -100% !important;
+  height: 100vh !important;
+  width: 80% !important;
+  max-width: 320px !important;
+  background-color: #ffffff !important;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1) !important;
+  z-index: 1001 !important;
+  transition: right 0.35s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-top-left-radius: 12px  !important;
+  border-bottom-left-radius: 12px !important;
+  overflow-y: auto !important;
+}
+
+/* Show the drawer */
+.mobile-drawer.active {
+  right: 0 !important;
+}
+
+/* Drawer header */
+.drawer-header {
+  padding: 1.2rem 1.5rem !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background-color: #f9f9f9 !important;
+}
+
+.drawer-header span {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #2f4f4f !important;
+}
+
+.close-btn {
+  font-size: 1.8rem !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #666 !important;
+  transition: color 0.3s ease !important;
+}
+.close-btn:hover {
+  color: #000 !important;
+}
+
+.drawer-body {
+  padding: 1.5rem !important;
+}
+
+.drawer-body .nav-link {
+  font-size: 1rem !important;
+  padding: 0.75rem 1rem !important;
+  color: #333 !important;
+  border-radius: 8px !important;
+  margin-bottom: 0.5rem !important;
+  text-decoration: none !important;
+  transition: background 0.25s ease, color 0.25s ease !important;
+}
+
+.drawer-body .nav-link:hover {
+  background-color: #f2f2f2 !important;
+  color: #000 !important;
+}
+
+/* Active nav link (if needed) */
+.drawer-body .nav-link.active {
+  background-color: #2f4f4f !important;
+  color: #fff !important;
+}
+
+/* Optional: smooth scrolling inside drawer */
+.mobile-drawer::-webkit-scrollbar {
+  width: 4px !important;
+}
+.mobile-drawer::-webkit-scrollbar-thumb {
+  background-color: #ccc !important;
+  border-radius: 10px !important;
+}
+
+
+.close-btn {
+  font-size: 1.5rem !important;
+}
+
+
+
+.drawer-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 70px); 
+}
+
+.main-links .nav-link,
+.user-links .nav-link {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.user-links {
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.main-links {
+  margin-bottom: auto;
+}
+
+/* Extra spacing and readability on smaller screens */
+@media (max-width: 768px) {
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .navbar-collapse {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Improve navbar on extra small devices */
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-toggler {
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+</style>
+
+<!-- Navbar -->
+<nav class="navbar bg-body-light border-bottom sticky-top d-flex justify-content-between align-items-center px-3 py-2">
+  <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i>  </a>
+
+  <!-- Hamburger for mobile -->
+  <button class="hamburger-btn d-md-none border-0 bg-transparent" id="drawerToggle">
+    <i class="fa fa-bars fa-lg"></i>
+  </button>
+
+  <!-- Desktop Nav (hidden on mobile) -->
+  <div class="d-none d-md-flex gap-3 align-items-center">
+    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="/listings">Browse Listings</a>
+    <% if (!currUser) { %>
+      <a class="nav-link" href="/login">Log in</a>
+      <a class="nav-link" href="/login?redirect=/host/dashboard">Login as Host</a>
+    <% } else { %>
+      <a class="nav-link" href="/wishlist">My WishList</a>
+      <a class="nav-link" href="/reserve/bookings">My Bookings</a>
+      <a class="nav-link" href="/logout">Log out</a>
+    <% } %>
+  </div>
+</nav>
+
+<!-- Mobile Drawer (hidden by default) -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <span>Menu</span>
+    <button class="close-btn" id="drawerClose"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="drawer-body d-flex flex-column justify-content-between h-100">
+    <!-- LEFT SECTION (Main links) -->
+    <div class="main-links">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/listings">Browse Listings</a>
     </div>
-  </nav>
+
+    <!-- RIGHT SECTION (Auth/User links) -->
+    <div class="user-links mt-4 pt-3 border-top">
+      <% if (!currUser) { %>
+        <a class="nav-link" href="/login">Log in</a>
+        <a class="nav-link" href="/login?redirect=/host/dashboard">Login as Host</a>
+      <% } %>
+      <% if (currUser) { %>
+        <a class="nav-link" href="/wishlist">My Wishlist</a>
+        <a class="nav-link" href="/reserve/bookings">My Bookings</a>
+        <a class="nav-link" href="/logout">Log out</a>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const drawer = document.getElementById("mobileDrawer");
+    const toggleBtn = document.getElementById("drawerToggle");
+    const closeBtn = document.getElementById("drawerClose");
+
+    toggleBtn.addEventListener("click", () => {
+      drawer.classList.toggle("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      drawer.classList.remove("active");
+    });
+
+    // Optional: close when clicking outside drawer
+    window.addEventListener("click", (e) => {
+      if (!drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+        drawer.classList.remove("active");
+      }
+    });
+  });
+</script>
