@@ -1,4 +1,3 @@
-
 const testimonials = [
     { name: 'Jane Smith', review: 'Absolutely stunning views and great service.', rating: 5 },
     { name: 'Michael Brown', review: 'The stay was very comfortable and cozy.', rating: 4 },
@@ -17,7 +16,6 @@ allCards.forEach(t => {
     const card = document.createElement('div');
     card.classList.add('testimonial-card');
 
-    // Create stars
     const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
 
     card.innerHTML = `

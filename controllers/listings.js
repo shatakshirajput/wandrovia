@@ -9,7 +9,6 @@ module.exports.index = async (req, res) => {
     const { search, category } = req.query;
     let filter = {};
 
-    // Filter by category (optional)
     if (category) {
         filter.category = category;
     }
@@ -32,8 +31,6 @@ module.exports.showListings=async (req,res)=>{
     res.render("listings/show.ejs",{listing,currentUser: req.user });
 };
 module.exports.createListings=async(req,res)=>{
-    // let result = listingSchema.validate(req.body);
-    // console.log(result);
     let response = await geocodingClient
     .forwardGeocode({
       query: req.body.listing.location,

@@ -9,36 +9,27 @@
   <link rel="stylesheet" href="/css/main.css">
   <link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
-
 <body>
   <header>
     <div class="header-container">
       <h1>Wandrovia</h1>
-
       <div class="hamburger" id="hamburger">
         <i class="fa fa-bars"></i>
       </div>
-
       <nav id="nav-links">
         <a href="/host">Become a host</a>
         <a href="/listings">Explore Destinations</a>
       </nav>
     </div>
   </header>
-
-
   <section class="hero">
     <div class="content">
       <h2>Discover Iconic Places Across the Globe</h2>
       <p>Explore stunning destinations, hidden gems, and cultural wonders—all in one place with Wandrovia.</p>
     </div>
   </section>
-
-
   <section class="section">
     <h3>Why Choose Wandrovia?</h3>
     <p>We spotlight breathtaking travel spots that cater to every kind of explorer. Find your next unforgettable journey
@@ -58,7 +49,6 @@
       </div>
     </div>
   </section>
-
   <section class="section">
     <h3>Top Destinations</h3>
     <div class="gallery">
@@ -80,7 +70,6 @@
         src: 'https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?auto=format&fit=crop&w=800&q=60' ,
         alt: 'Luxury Penthouse with City Views' ,
         text: 'Capture skyline views and urban charm from this high-rise getaway in the heart of the city.' } ]; %>
-
         <% destinations.forEach(dest=> { %>
           <div class="destination-card">
             <img src="<%= dest.src %>" alt="<%= dest.alt %>">
@@ -91,16 +80,13 @@
           <% }) %>
     </div>
   </section>
-
   <section class="guest-testimonials">
     <h3 class="testimonial-heading">Traveler Reviews</h3>
     <div class="testimonials-container" id="testimonials-container">
       <div class="testimonials-track" id="testimonials-track">
-        <!-- Testimonial cards will be dynamically injected by JS -->
       </div>
     </div>
   </section>
-
   <section class="plan-your-stay">
     <div class="content">
       <h2>Plan Your Perfect Getaway</h2>
@@ -108,7 +94,6 @@
       <a href="/listings" class="btn">Explore Listings →</a>
     </div>
   </section>
-
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-branding">
@@ -121,7 +106,6 @@
           <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
       </div>
-
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
@@ -131,7 +115,6 @@
           <li><a href="/help">Help Center</a></li>
         </ul>
       </div>
-
       <div class="footer-legal">
         <h4>Legal</h4>
         <ul>
@@ -140,7 +123,6 @@
           <li><a href="/cookies">Cookie Policy</a></li>
         </ul>
       </div>
-
       <div class="footer-newsletter">
         <h4>Stay Updated</h4>
         <form>
@@ -149,35 +131,24 @@
         </form>
       </div>
     </div>
-
     <div class="footer-bottom">
       <p>&copy; 2025 Wanderlust Pvt. Ltd. | Made with ❤️ by Travel Lovers</p>
     </div>
   </footer>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("nav-links");
-
     hamburger.addEventListener("click", () => {
       navLinks.classList.toggle("active");
-
-      // Toggle icon dynamically
       const isOpen = navLinks.classList.contains("active");
       hamburger.innerHTML = isOpen
         ? '<i class="fa fa-times"></i>'
         : '<i class="fa fa-bars"></i>';
     });
-
-    // Initial icon setup
     hamburger.innerHTML = '<i class="fa fa-bars"></i>';
   });
 </script>
-
-
-
-  <script src="/js/main.js"></script>
+<script src="/js/main.js"></script>
 </body>
-
 </html>

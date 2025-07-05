@@ -93,7 +93,6 @@ app.use('/host', hostRoutes);
 app.use("/reserve", reserveRoutes);
 app.use("/wishlist", wishlistRoutes);
 
-// Error handling
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page not found"));
 });

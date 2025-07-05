@@ -1,12 +1,9 @@
 <style>
-  /* Fix mobile drawer z-index and styling */
 .mobile-drawer {
   z-index: 1;
   background-color: #ffffff;
   padding: 1rem 0;
 }
-
-/* Drawer Styles */
 .mobile-drawer {
   position: fixed !important;
   top: 0 !important;
@@ -25,12 +22,10 @@
   overflow-y: auto !important;
 }
 
-/* Show the drawer */
 .mobile-drawer.active {
   right: 0 !important;
 }
 
-/* Drawer header */
 .drawer-header {
   padding: 1.2rem 1.5rem !important;
   border-bottom: 1px solid #e0e0e0 !important;
@@ -77,13 +72,11 @@
   color: #000 !important;
 }
 
-/* Active nav link (if needed) */
 .drawer-body .nav-link.active {
   background-color: #2f4f4f !important;
   color: #fff !important;
 }
 
-/* Optional: smooth scrolling inside drawer */
 .mobile-drawer::-webkit-scrollbar {
   width: 4px !important;
 }
@@ -92,12 +85,9 @@
   border-radius: 10px !important;
 }
 
-
 .close-btn {
   font-size: 1.5rem !important;
 }
-
-
 
 .drawer-body {
   padding: 1.5rem;
@@ -132,7 +122,6 @@
   margin-bottom: auto;
 }
 
-/* Extra spacing and readability on smaller screens */
 @media (max-width: 768px) {
   .navbar-nav .nav-link {
     padding: 0.75rem 1rem;
@@ -145,7 +134,6 @@
   }
 }
 
-/* Improve navbar on extra small devices */
 @media (max-width: 480px) {
   .navbar-brand {
     font-size: 1.2rem;
@@ -157,17 +145,11 @@
 }
 
 </style>
-
-<!-- Navbar -->
 <nav class="navbar bg-body-light border-bottom sticky-top d-flex justify-content-between align-items-center px-3 py-2">
   <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i>  </a>
-
-  <!-- Hamburger for mobile -->
   <button class="hamburger-btn d-md-none border-0 bg-transparent" id="drawerToggle">
     <i class="fa fa-bars fa-lg"></i>
   </button>
-
-  <!-- Desktop Nav (hidden on mobile) -->
   <div class="d-none d-md-flex gap-3 align-items-center">
     <a class="nav-link" href="/">Home</a>
     <a class="nav-link" href="/listings">Browse Listings</a>
@@ -181,8 +163,6 @@
     <% } %>
   </div>
 </nav>
-
-<!-- Mobile Drawer (hidden by default) -->
 <div class="mobile-drawer" id="mobileDrawer">
   <div class="drawer-header">
     <span>Menu</span>
@@ -190,13 +170,10 @@
   </div>
 
   <div class="drawer-body d-flex flex-column justify-content-between h-100">
-    <!-- LEFT SECTION (Main links) -->
     <div class="main-links">
       <a class="nav-link" href="/">Home</a>
       <a class="nav-link" href="/listings">Browse Listings</a>
     </div>
-
-    <!-- RIGHT SECTION (Auth/User links) -->
     <div class="user-links mt-4 pt-3 border-top">
       <% if (!currUser) { %>
         <a class="nav-link" href="/login">Log in</a>
@@ -211,7 +188,6 @@
   </div>
 </div>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const drawer = document.getElementById("mobileDrawer");
@@ -225,8 +201,6 @@
     closeBtn.addEventListener("click", () => {
       drawer.classList.remove("active");
     });
-
-    // Optional: close when clicking outside drawer
     window.addEventListener("click", (e) => {
       if (!drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
         drawer.classList.remove("active");

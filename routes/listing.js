@@ -30,7 +30,6 @@ router.route("/:id")
     .put(isLoggedIn,isOwner,upload.single('listing[image][url]'),wrapAsync(listingController.updateListing))
     .delete(isLoggedIn,isOwner,wrapAsync(listingController.destroyListing));
 
-//edit route
 router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(listingController.renderEditForm));
 
 module.exports=router;

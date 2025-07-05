@@ -4,23 +4,18 @@
 <% const redirectTo = typeof query.redirect !== "undefined" ? query.redirect : "/listings"; %>
 
 <div class="auth-wrapper slide-in-right">
-  <!-- Left Card (Form) -->
   <div class="auth-card form-side">
     <h2>Login to Wandrovia</h2>
     <form action="/login" method="POST">
       <input type="hidden" name="redirectTo" value="<%= redirectTo %>">
-
       <label class="form-label" for="username">Username</label>
       <input class="form-control" type="text" id="username" name="username" required>
-
       <label class="form-label" for="password">Password</label>
       <input class="form-control" type="password" id="password" name="password" required>
-
       <button class="btn-auth" type="submit">Login</button>
     </form>
   </div>
 
-  <!-- Right Card (Quote + Sign Up) -->
   <div class="auth-card info-side">
     <div class="info-content">
       <h2 class="typing-text"></h2>

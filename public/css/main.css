@@ -504,7 +504,6 @@ nav a:hover::after {
     text-decoration: none;
 }
 
-
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -538,7 +537,6 @@ nav a:hover::after {
     display: flex;
     gap: 1.5rem;
 }
-
 
 @media (max-width: 768px) {
     .hamburger {
@@ -599,7 +597,6 @@ nav a:hover::after {
     }
 }
 
-/* Faster testimonial scroll on mobile */
 @media (max-width: 480px) {
     .testimonials-track {
         animation: scrollLeftFast 20s linear infinite;
@@ -615,9 +612,6 @@ nav a:hover::after {
         transform: translateX(-50%);
     }
 }
-
-
-/* === Media Queries === */
 
 @media (max-width: 1024px) {
     .hero h2 {

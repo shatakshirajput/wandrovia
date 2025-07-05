@@ -1,28 +1,22 @@
 <% layout('/layouts/boilerplate') %>
-
 <style>
-/* Filters section: button on small screens */
 .filters .btn.add-btn {
   background-color: #2F4F4F;
   color: white;
   font-weight: 600;
 }
-
-/* Filters grid: make them wrap better and center on small screens */
 @media (max-width: 768px) {
   .filters .collapse {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-
   .filters .filter {
     width: 100%;
     max-width: 300px;
   }
 }
 
-/* Wishlist button adjustments */
 .wishlist-btn {
   background: white;
   border: 1px solid #ddd;
@@ -40,7 +34,6 @@
   font-size: 1rem;
 }
 
-/* Card responsiveness */
 @media (max-width: 576px) {
   .card-body span.fs-5 {
     font-size: 1rem;
@@ -66,7 +59,7 @@
   }
 
   .wishlist-text {
-    display: none; /* Hide text on small screens if too tight */
+    display: none;
   }
 }
 
@@ -79,10 +72,7 @@
     height: 180px !important;
   }
 }
-
-
 </style>
-
   <body>
     <div class="container filters mt-4">
       <button class="btn add-btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse"
@@ -201,13 +191,10 @@
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
         const listingId = btn.dataset.id;
-
         const res = await fetch(`/wishlist/toggle/${listingId}`, {
           method: "POST"
         });
-
         const data = await res.json();
-
         if (data.wishlisted) {
           btn.classList.add('active');
           btn.querySelector('.wishlist-text').textContent = "Added to Wishlist";

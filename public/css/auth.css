@@ -15,7 +15,6 @@ body, html {
   position: relative;
 }
 
-/* Wrapper for the two cards */
 .auth-wrapper {
   display: flex;
   width: 90%;
@@ -30,7 +29,6 @@ body, html {
   animation: slideIn 0.6s ease-out;
 }
 
-/* Shared card structure */
 .auth-card {
   flex: 1;
   padding: 50px 40px;
@@ -40,12 +38,10 @@ body, html {
   min-height: 500px;
 }
 
-/* Form (Right) Side */
 .form-side {
   background-color: #ffffff;
 }
 
-/* Info (Left) Side */
 .info-side {
   background-color: var(--forest-green);
   color: white;
@@ -56,7 +52,6 @@ body, html {
   padding: 50px 30px;
 }
 
-/* Typing text inside info side */
 .typing-text {
   font-size: 28px;
   font-weight: 600;
@@ -65,7 +60,6 @@ body, html {
   display: inline-block;
 }
 
-/* Top quote container */
 .info-content {
   flex-grow: 1;
   display: flex;
@@ -74,13 +68,11 @@ body, html {
   text-align: center;
 }
 
-/* Bottom button container */
 .info-footer {
   text-align: center;
   padding-top: 20px;
 }
 
-/* Styled link button to switch forms */
 .btn-switch {
   display: inline-block;
   margin-top: 10px;
@@ -98,7 +90,6 @@ body, html {
   color: var(--charcoal-black);
 }
 
-/* Labels and Inputs */
 .form-label {
   font-weight: 600;
   margin-bottom: 6px;
@@ -121,7 +112,6 @@ body, html {
   outline: none;
 }
 
-/* Submit button */
 .btn-auth {
   padding: 12px;
   width: 100%;
@@ -139,7 +129,6 @@ body, html {
   background-color: #1f3f3f;
 }
 
-/* Slide in animation from one side */
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -151,13 +140,11 @@ body, html {
   }
 }
 
-/* Ensure footer stays visible */
 footer {
   position: relative;
   z-index: 10;
 }
 
-/* Optional: Responsive layout for smaller screens */
 @media (max-width: 768px) {
   .auth-wrapper {
     flex-direction: column;

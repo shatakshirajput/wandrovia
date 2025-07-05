@@ -1,5 +1,4 @@
 <% layout('layouts/boilerplate') %>
-
     <style>
     .dashboard-hero {
         background-color: var(--forest-green);
@@ -10,12 +9,10 @@
         margin-top: 2rem;
         box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
     }
-
     .dashboard-hero h1 {
         font-weight: bold;
         font-size: 2.5rem;
     }
-
     .dashboard-btn {
         margin-top: 1.5rem;
         font-size: 1.1rem;
@@ -27,31 +24,25 @@
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-
     .dashboard-btn:hover {
         transform: translateY(-3px);
         background-color: var(--sand-beige);
         color: var(--charcoal-black);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     }
-
     .listing-card {
         transition: all 0.3s ease;
     }
-
     .listing-card:hover {
         transform: scale(1.02);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
-
     .object-fit-cover {
         object-fit: cover;
     }
-
     .card img {
         border-right: 1px solid #e0e0e0;
     }
-
     .card:hover {
         transform: none;
         box-shadow: none;
@@ -72,13 +63,11 @@
             <% listingsWithBookings.forEach(item => { %>
                 <div class="card shadow-sm d-flex flex-row overflow-hidden rounded-4" style="min-height: 200px;">
 
-                    <!-- Image -->
                     <div class="col-md-4" style="max-width: 300px;">
                         <img src="<%= item.listing.image.url %>" class="img-fluid h-100 object-fit-cover"
                             style="width: 100%; object-fit: cover;" alt="Listing image">
                     </div>
 
-                    <!-- Content -->
                     <div class="col-md-8 p-4 d-flex flex-column justify-content-between">
                         <div>
                             <div class="d-flex justify-content-between align-items-center">
@@ -95,7 +84,6 @@
                                 <% } %>
                             </p>
 
-                            <!-- Bookings Section -->
                             <% if (item.bookings.length > 0) { %>
                                 <hr>
                                 <h6 class="fw-semibold">Bookings:</h6>
@@ -114,7 +102,6 @@
                             <% } %>
                         </div>
 
-                        <!-- Price & Buttons -->
                         <div class="d-flex justify-content-between align-items-center mt-2">
                             <span class="fw-semibold text-dark">&#8377;<%= item.listing.price.toLocaleString("en-IN") %>
                                 <span class="text-muted">/ night</span>
